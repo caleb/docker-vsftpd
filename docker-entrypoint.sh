@@ -9,6 +9,10 @@ if [ -f /etc/vsftpd.conf.mo ]; then
     rm /etc/vsftpd.conf.mo
 fi
 
+if [ -d "${VSFTPD_LOCAL_ROOT}" ]; then
+    chown :ftp -R "${VSFTPD_LOCAL_ROOT}"
+fi
+
 #
 # Add users
 #
@@ -27,6 +31,7 @@ for var in ${!USER_*}; do
         else
             useradd -m "${username}"
         fi
+        usermod -a -G ftp "${username}"
 
         echo "${!var}" | chpasswd
     else
