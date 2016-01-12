@@ -10,7 +10,8 @@ if [ -f /etc/vsftpd.conf.mo ]; then
 fi
 
 if [ -d "${VSFTPD_LOCAL_ROOT}" ]; then
-    chown :ftp -R "${VSFTPD_LOCAL_ROOT}"
+    chown -R :ftp "${VSFTPD_LOCAL_ROOT}"
+    chmod -R g+w "${VSFTPD_LOCAL_ROOT}"
 fi
 
 #
@@ -25,12 +26,17 @@ for var in ${!USER_*}; do
         username="${BASH_REMATCH[1]}"
         password="${BASH_REMATCH[2]}"
         echo "Creating user \"${username}\" with password \"${password}\""
+
+        useradd_flags=""
         if [ -d /home/"${username}" ]; then
-            useradd "${username}"
+            useradd_flags="-m"
             chown -R "${username}" /home/"${username}"
-        else
-            useradd -m "${username}"
         fi
+
+        if ! id "${username}" > /dev/null 2>&1; then
+            useradd "${useradd_flags}" "${username}"
+        fi
+
         usermod -a -G ftp "${username}"
 
         echo "${!var}" | chpasswd
