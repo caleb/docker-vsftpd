@@ -152,6 +152,7 @@ local_root={{VSFTPD_LOCAL_ROOT}}
 pasv_enable=YES
 pasv_min_port=10090
 pasv_max_port=10100
+pasv_promiscuous={{VSFTPD_PASV_PROMISCUOUS}}
 
 ssl_enable=YES
 allow_anon_ssl=NO
