@@ -33,7 +33,7 @@ for var in ${!USER_*}; do
         fi
 
         if ! id "${username}" > /dev/null 2>&1; then
-            useradd "${useradd_flags}" "${username}"
+            useradd ${useradd_flags} "${username}"
         fi
 
         if [ -d /home/"${username}" ]; then
