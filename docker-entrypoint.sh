@@ -28,16 +28,16 @@ for var in ${!USER_*}; do
         echo "Creating user \"${username}\" with password \"${password}\""
 
         useradd_flags=""
-        if [ -d /home/"${username}" ]; then
+        if [ ! -d /home/"${username}" ]; then
             useradd_flags="-m"
-        fi
-
-        if ! id "${username}" > /dev/null 2>&1; then
-            useradd ${useradd_flags} "${username}"
         fi
 
         if [ -d /home/"${username}" ]; then
             chown -R "${username}" /home/"${username}"
+        fi
+
+        if ! id "${username}" > /dev/null 2>&1; then
+            useradd ${useradd_flags} "${username}"
         fi
 
         usermod -a -G ftp "${username}"
