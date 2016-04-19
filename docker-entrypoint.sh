@@ -6,6 +6,7 @@ shopt -s globstar nullglob
 . /helpers/vars.sh
 
 read-var VSFTPD_PASV_PROMISCUOUS -- YES
+read-var VSFTPD_SECCOMP_SANDBOX  -- YES
 
 if [ -f /etc/vsftpd.conf.mo ]; then
     /usr/local/bin/mo /etc/vsftpd.conf.mo > /etc/vsftpd.conf
