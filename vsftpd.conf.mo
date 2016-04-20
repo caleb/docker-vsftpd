@@ -153,6 +153,10 @@ pasv_enable=YES
 pasv_min_port=10090
 pasv_max_port=10100
 pasv_promiscuous={{VSFTPD_PASV_PROMISCUOUS}}
+{{#VSFTPD_PASV_ADDRESS}}
+pasv_address={{VSFTPD_PASV_ADDRESS}}
+{{/VSFTPD_PASV_ADDRESS}}
+pasv_addr_resolve={{VSFTPD_PASV_ADDR_RESOLVE}}
 
 ssl_enable=YES
 allow_anon_ssl=NO
