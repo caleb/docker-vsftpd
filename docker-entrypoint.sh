@@ -49,7 +49,7 @@ for var in ${!USER_*}; do
 
         echo "${!var}" | chpasswd
     else
-        echo "Misformed user variable ${var}=${!var}. Should be ${var}=username:password" >&2
+        echo "Malformed user variable ${var}=${!var}. Should be ${var}=username:password" >&2
         exit 1
     fi
 done
@@ -58,7 +58,7 @@ done
 mkdir -p /var/run/vsftpd/empty
 
 if [ "${1}" = "vsftpd" ]; then
-    exec /usr/sbin/vsftpd
+    exec /usr/bin/runsvdir /etc/service
 else
     exec "${@}"
 fi

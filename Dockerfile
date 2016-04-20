@@ -19,8 +19,11 @@ RUN apt-get update \
 &&  apt-get install -y vsftpd \
 &&  rm -rf /var/lib/apt/lists/*
 
-ADD vsftpd.conf.mo /etc/vsftpd.conf.mo
+# Add our entrypoint
 ADD docker-entrypoint.sh /entrypoint.sh
+
+# Add the rootfs
+ADD rootfs /
 
 EXPOSE 21 990
 EXPOSE 10090-10100

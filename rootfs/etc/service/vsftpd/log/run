@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p /var/log/vsftpd
+exec svlogd -tt /var/log/vsftpd
