@@ -141,7 +141,12 @@ pam_service_name=vsftpd
 #
 # This option specifies the location of the RSA certificate to use for SSL
 # encrypted connections.
+{{#VSFTPD_RSA_CERT_FILE}}
 rsa_cert_file={{VSFTPD_RSA_CERT_FILE}}
+{{/VSFTPD_RSA_CERT_FILE}}
+{{#VSFTPD_RSA_PRIVATE_KEY_FILE}}
+rsa_private_key_file={{VSFTPD_RSA_PRIVATE_KEY_FILE}}
+{{/VSFTPD_RSA_PRIVATE_KEY_FILE}}
 
 require_ssl_reuse=NO
 
@@ -160,8 +165,8 @@ pasv_addr_resolve={{VSFTPD_PASV_ADDR_RESOLVE}}
 
 ssl_enable=YES
 allow_anon_ssl=NO
-force_local_data_ssl=YES
-force_local_logins_ssl=YES
+force_local_data_ssl={{VSFTPD_FORCE_LOCAL_DATA_SSL}}
+force_local_logins_ssl={{VSFTPD_FORCE_LOCAL_LOGINS_SSL}}
 ssl_ciphers=HIGH
 ssl_tlsv1=YES
 ssl_sslv2=YES

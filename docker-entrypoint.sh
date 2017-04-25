@@ -5,11 +5,13 @@ shopt -s globstar nullglob
 . /helpers/links.sh
 . /helpers/vars.sh
 
-read-var VSFTPD_PASV_PROMISCUOUS  -- YES
-read-var VSFTPD_PASV_ADDR_RESOLVE -- NO
-read-var VSFTPD_SECCOMP_SANDBOX   -- YES
+read-var VSFTPD_PASV_PROMISCUOUS       -- YES
+read-var VSFTPD_PASV_ADDR_RESOLVE      -- NO
+read-var VSFTPD_SECCOMP_SANDBOX        -- YES
+read-var VSFTPD_FORCE_LOCAL_DATA_SSL   -- YES
+read-var VSFTPD_FORCE_LOCAL_LOGINS_SSL -- YES
 
-if [ -f /etc/vsftpd.conf.mo ]; then
+if [ -f /etc/vsftpd.conf.mo ] && [ ! -f /etc/vsftpd.conf ]; then
     /usr/local/bin/mo /etc/vsftpd.conf.mo > /etc/vsftpd.conf
     rm /etc/vsftpd.conf.mo
 fi

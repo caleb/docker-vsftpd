@@ -19,6 +19,8 @@ RUN apt-get update \
 &&  apt-get install -y vsftpd \
 &&  rm -rf /var/lib/apt/lists/*
 
+RUN rm -f /etc/vsftpd.conf
+
 # Add our entrypoint
 ADD docker-entrypoint.sh /entrypoint.sh
 
