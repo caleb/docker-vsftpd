@@ -173,3 +173,9 @@ ssl_sslv2=YES
 ssl_sslv3=YES
 
 seccomp_sandbox={{VSFTPD_SECCOMP_SANDBOX}}
+
+#
+# Implicit FTPS
+#
+implicit_ssl=YES
+listen_port=990
