@@ -114,8 +114,9 @@ connect_from_port_20=YES
 # You may specify an explicit list of local users to chroot() to their home
 # directory. If chroot_local_user is YES, then this list becomes a list of
 # users to NOT chroot().
-#chroot_local_user=YES
-#chroot_list_enable=YES
+chroot_local_user={{VSFTPD_CHROOT_LOCAL_USER}}
+chroot_list_enable={{VSFTPD_CHROOT_LIST_ENABLE}}
+allow_writeable_chroot={{VSFTPD_ALLOW_WRITABLE_CHROOT}}
 # (default follows)
 #chroot_list_file=/etc/vsftpd.chroot_list
 #

@@ -5,6 +5,10 @@ shopt -s globstar nullglob
 . /helpers/links.sh
 . /helpers/vars.sh
 
+read-var VSFTPD_CHROOT_LOCAL_USER      -- NO
+read-var VSFTPD_CHROOT_LIST_ENABLE     -- NO
+read-var VSFTPD_ALLOW_WRITABLE_CHROOT  -- NO
+
 read-var VSFTPD_PASV_PROMISCUOUS       -- YES
 read-var VSFTPD_PASV_ADDR_RESOLVE      -- NO
 read-var VSFTPD_SECCOMP_SANDBOX        -- YES
@@ -34,9 +38,9 @@ for var in ${!USER_*}; do
         password="${BASH_REMATCH[2]}"
         echo "Creating user \"${username}\" with password \"${password}\""
 
-        useradd_flags=""
+        useradd_flags="--shell=/bin/bash"
         if [ ! -d /home/"${username}" ]; then
-            useradd_flags="-m"
+            useradd_flags="${useradd_flags} -m"
         fi
 
         if [ -d /home/"${username}" ]; then
