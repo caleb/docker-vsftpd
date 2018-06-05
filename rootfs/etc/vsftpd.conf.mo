@@ -178,5 +178,5 @@ seccomp_sandbox={{VSFTPD_SECCOMP_SANDBOX}}
 #
 # Implicit FTPS
 #
-implicit_ssl=YES
-listen_port=990
+implicit_ssl={{VSFTPD_IMPLICIT_SSL}}
+listen_port={{VSFTPD_LISTEN_PORT}}
