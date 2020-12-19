@@ -15,8 +15,7 @@ shopt -s globstar nullglob
 [[ -z "${VSFTPD_IMPLICIT_SSL}" ]]           && export VSFTPD_IMPLICIT_SSL=NO
 [[ -z "${VSFTPD_LISTEN_PORT}" ]]            && export VSFTPD_LISTEN_PORT=21
 
-
-[[ -z "${VSFTPD_SSL_TLSV1}" ]]              && export VSFTPD_SSL_TLSV1=NO
+[[ -z "${VSFTPD_SSL_TLSV1}" ]]              && export VSFTPD_SSL_TLSV1=YES
 [[ -z "${VSFTPD_SSL_SSLV2}" ]]              && export VSFTPD_SSL_SSLV2=YES
 [[ -z "${VSFTPD_SSL_SSLV3}" ]]              && export VSFTPD_SSL_SSLV3=YES
 
