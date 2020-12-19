@@ -169,9 +169,9 @@ allow_anon_ssl=NO
 force_local_data_ssl={{VSFTPD_FORCE_LOCAL_DATA_SSL}}
 force_local_logins_ssl={{VSFTPD_FORCE_LOCAL_LOGINS_SSL}}
 ssl_ciphers=HIGH
-ssl_tlsv1=YES
-ssl_sslv2=YES
-ssl_sslv3=YES
+ssl_tlsv1={{VSFTPD_SSL_TLSV1}}
+ssl_sslv2={{VSFTPD_SSL_SSLV2}}
+ssl_sslv3={{VSFTPD_SSL_SSLV3}}
 
 seccomp_sandbox={{VSFTPD_SECCOMP_SANDBOX}}
 
